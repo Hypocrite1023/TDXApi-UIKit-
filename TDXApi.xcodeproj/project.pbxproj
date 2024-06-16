@@ -13,6 +13,12 @@
 		CD1271432C1EC7560092F980 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CD1271422C1EC7560092F980 /* Base */; };
 		CD1271452C1EC7570092F980 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD1271442C1EC7570092F980 /* Assets.xcassets */; };
 		CD1271482C1EC7570092F980 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CD1271472C1EC7570092F980 /* Base */; };
+		CD1271512C1ECD400092F980 /* UbikeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1271502C1ECD400092F980 /* UbikeTableViewController.swift */; };
+		CD1271542C1ECD8A0092F980 /* UbikeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1271532C1ECD8A0092F980 /* UbikeTableViewCell.swift */; };
+		CD1271572C1ED05B0092F980 /* DataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1271562C1ED05B0092F980 /* DataModels.swift */; };
+		CD1271592C1EE1D40092F980 /* UbikeNavigationContorller.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1271582C1EE1D40092F980 /* UbikeNavigationContorller.swift */; };
+		CD12715B2C1EE5680092F980 /* UbikeStationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD12715A2C1EE5680092F980 /* UbikeStationViewController.swift */; };
+		CD12715D2C1F26690092F980 /* config.json in Resources */ = {isa = PBXBuildFile; fileRef = CD12715C2C1F26690092F980 /* config.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,12 @@
 		CD1271442C1EC7570092F980 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CD1271472C1EC7570092F980 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CD1271492C1EC7570092F980 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD1271502C1ECD400092F980 /* UbikeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbikeTableViewController.swift; sourceTree = "<group>"; };
+		CD1271532C1ECD8A0092F980 /* UbikeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbikeTableViewCell.swift; sourceTree = "<group>"; };
+		CD1271562C1ED05B0092F980 /* DataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModels.swift; sourceTree = "<group>"; };
+		CD1271582C1EE1D40092F980 /* UbikeNavigationContorller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbikeNavigationContorller.swift; sourceTree = "<group>"; };
+		CD12715A2C1EE5680092F980 /* UbikeStationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UbikeStationViewController.swift; sourceTree = "<group>"; };
+		CD12715C2C1F26690092F980 /* config.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = config.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,9 @@
 		CD12713A2C1EC7560092F980 /* TDXApi */ = {
 			isa = PBXGroup;
 			children = (
+				CD1271552C1ED03C0092F980 /* DataModels */,
+				CD1271522C1ECD6C0092F980 /* Views */,
+				CD12714F2C1ECD1D0092F980 /* ViewControllers */,
 				CD12713B2C1EC7560092F980 /* AppDelegate.swift */,
 				CD12713D2C1EC7560092F980 /* SceneDelegate.swift */,
 				CD12713F2C1EC7560092F980 /* ViewController.swift */,
@@ -63,8 +78,35 @@
 				CD1271442C1EC7570092F980 /* Assets.xcassets */,
 				CD1271462C1EC7570092F980 /* LaunchScreen.storyboard */,
 				CD1271492C1EC7570092F980 /* Info.plist */,
+				CD12715C2C1F26690092F980 /* config.json */,
 			);
 			path = TDXApi;
+			sourceTree = "<group>";
+		};
+		CD12714F2C1ECD1D0092F980 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CD1271502C1ECD400092F980 /* UbikeTableViewController.swift */,
+				CD1271582C1EE1D40092F980 /* UbikeNavigationContorller.swift */,
+				CD12715A2C1EE5680092F980 /* UbikeStationViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CD1271522C1ECD6C0092F980 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CD1271532C1ECD8A0092F980 /* UbikeTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CD1271552C1ED03C0092F980 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				CD1271562C1ED05B0092F980 /* DataModels.swift */,
+			);
+			path = DataModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD1271452C1EC7570092F980 /* Assets.xcassets in Resources */,
+				CD12715D2C1F26690092F980 /* config.json in Resources */,
 				CD1271482C1EC7570092F980 /* Base in Resources */,
 				CD1271432C1EC7560092F980 /* Base in Resources */,
 			);
@@ -138,8 +181,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD12715B2C1EE5680092F980 /* UbikeStationViewController.swift in Sources */,
+				CD1271512C1ECD400092F980 /* UbikeTableViewController.swift in Sources */,
+				CD1271542C1ECD8A0092F980 /* UbikeTableViewCell.swift in Sources */,
 				CD1271402C1EC7560092F980 /* ViewController.swift in Sources */,
+				CD1271572C1ED05B0092F980 /* DataModels.swift in Sources */,
 				CD12713C2C1EC7560092F980 /* AppDelegate.swift in Sources */,
+				CD1271592C1EE1D40092F980 /* UbikeNavigationContorller.swift in Sources */,
 				CD12713E2C1EC7560092F980 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,8 +346,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -307,6 +355,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = hypocrite1023.TDXApi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -326,8 +378,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -335,6 +387,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = hypocrite1023.TDXApi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

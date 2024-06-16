@@ -1,24 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bh3-XJ-RXL">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Ubike Navigation Contorller-->
+        <scene sceneID="v6u-Gs-fKj">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <navigationController id="bh3-XJ-RXL" customClass="UbikeNavigationContorller" customModule="TDXApi" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lLJ-lI-xp0">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ErK-F1-Y7G" kind="relationship" relationship="rootViewController" id="4Ou-C6-6yk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xwz-Pm-23B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-2700" y="43"/>
+        </scene>
+        <!--Ubike-->
+        <scene sceneID="OYM-rS-xGP">
+            <objects>
+                <tableViewController id="ErK-F1-Y7G" customClass="UbikeTableViewController" customModule="TDXApi" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Aoq-Qh-uKs">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ubikeCityCell" id="uPy-jy-Xz4" customClass="UbikeTableViewCell" customModule="TDXApi" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="393" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uPy-jy-Xz4" id="giB-Li-rJd">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hTo-zK-5iO">
+                                            <rect key="frame" x="10" y="0.0" width="100" height="100"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="hTo-zK-5iO" secondAttribute="height" multiplier="1:1" id="DUu-Ui-qar"/>
+                                                <constraint firstAttribute="height" constant="100" id="mnQ-6n-gOM"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJi-hO-fac">
+                                            <rect key="frame" x="115" y="0.0" width="278" height="100"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="hTo-zK-5iO" firstAttribute="top" secondItem="giB-Li-rJd" secondAttribute="top" id="510-Rg-zsI"/>
+                                        <constraint firstItem="GJi-hO-fac" firstAttribute="top" secondItem="giB-Li-rJd" secondAttribute="top" id="K5X-lb-Qt1"/>
+                                        <constraint firstItem="hTo-zK-5iO" firstAttribute="leading" secondItem="giB-Li-rJd" secondAttribute="leading" constant="10" id="Nh5-0Q-2b8"/>
+                                        <constraint firstItem="GJi-hO-fac" firstAttribute="leading" secondItem="hTo-zK-5iO" secondAttribute="trailing" constant="5" id="RKX-TC-aPW"/>
+                                        <constraint firstAttribute="trailing" secondItem="GJi-hO-fac" secondAttribute="trailing" id="XGm-D0-0Ku"/>
+                                        <constraint firstAttribute="bottom" secondItem="hTo-zK-5iO" secondAttribute="bottom" id="iZ8-Qo-RdX"/>
+                                        <constraint firstAttribute="bottom" secondItem="GJi-hO-fac" secondAttribute="bottom" id="jsK-Cf-1UY"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cityImage" destination="hTo-zK-5iO" id="XPn-89-ROX"/>
+                                    <outlet property="cityName" destination="GJi-hO-fac" id="Opy-bL-hmT"/>
+                                    <segue destination="nyb-C3-aDg" kind="show" identifier="showStationDetail" id="evH-Nc-ORX"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ErK-F1-Y7G" id="Wmg-s2-o2p"/>
+                            <outlet property="delegate" destination="ErK-F1-Y7G" id="csW-Eh-AMJ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Ubike" id="r7L-pM-kRv"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3VB-mt-rHb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1799.2366412213739" y="42.95774647887324"/>
+        </scene>
+        <!--Ubike Station View Controller-->
+        <scene sceneID="RXA-nS-kHb">
+            <objects>
+                <viewController id="nyb-C3-aDg" customClass="UbikeStationViewController" customModule="TDXApi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="n9u-1K-bL6">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gm-dw-Fjc">
+                                <rect key="frame" x="175.66666666666666" y="415.66666666666669" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="j1o-FO-YaC"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4gm-dw-Fjc" firstAttribute="centerX" secondItem="n9u-1K-bL6" secondAttribute="centerX" id="5w7-vZ-sOV"/>
+                            <constraint firstItem="4gm-dw-Fjc" firstAttribute="centerY" secondItem="n9u-1K-bL6" secondAttribute="centerY" id="oZw-bF-Uwg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="8Wr-5s-pLP"/>
+                    <connections>
+                        <outlet property="cityName" destination="4gm-dw-Fjc" id="pcQ-cy-jHG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uXx-Ou-qdw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-906" y="49"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
