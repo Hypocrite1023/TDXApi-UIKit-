@@ -27,8 +27,8 @@ struct readSecretFromConfig {
     }
 }
 
-enum errorWhileGetToken: Error {
-    case responseError, responseCodeError
+enum urlSessionError: Error {
+    case responseError, responseCodeError, urlError
 }
 
 struct AuthResponse: Codable {
@@ -74,7 +74,7 @@ class Token {
         let (data, response) = try await URLSession.shared.data(for: request)
         if let res = response as? HTTPURLResponse {
             guard (200...299).contains(res.statusCode) else {
-                throw errorWhileGetToken.responseCodeError
+                throw urlSessionError.responseCodeError
             }
             
             let decoder = JSONDecoder()
@@ -85,7 +85,7 @@ class Token {
             return authResponse.accessToken
         }
         else {
-            throw errorWhileGetToken.responseError
+            throw urlSessionError.responseError
         }
     }
     

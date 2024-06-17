@@ -12,7 +12,7 @@ class UbikeTableViewController: UITableViewController {
     var cities: [UbikeTableViewDataModel] = {
         var tmpArr: [UbikeTableViewDataModel] = []
         for city in CountyString.allCases {
-            tmpArr.append(UbikeTableViewDataModel(cityName: city, cityImageSourceName: "Cat"))
+            tmpArr.append(UbikeTableViewDataModel(cityName: city, cityImageSourceName: city.stringValue))
         }
         return tmpArr
     }()
@@ -118,7 +118,7 @@ class UbikeTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "showStationDetail" {
             if let selectIndex = tableView.indexPathForSelectedRow {
-                if let stationDetailView = segue.destination as? UbikeStationViewController {
+                if let stationDetailView = segue.destination as? StationDetailTableViewController {
                     stationDetailView.detail = self.cities[selectIndex.row]
                 }
             }

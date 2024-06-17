@@ -9,20 +9,22 @@ import UIKit
 
 class UbikeStationViewController: UIViewController {
     
-    @IBOutlet var cityName: UILabel?
     var detail: UbikeTableViewDataModel?
     var token = Token()
+    var detailManager = StationDetailManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        cityName?.text = detail?.cityName.rawValue
-//        Task {
-//            let token = await token.getToken()
-//            print(token)
-//        }
-        print(token.clientID, token.clientSecret)
+        Task {
+            let _ = await token.getToken()
+            if let city = detail?.cityName {
+                try? await detailManager.getPublicBikeAvailabilityFor(city: city)
+            }
+        }
+        navigationItem.title = detail?.cityName.rawValue
+//        print(token.clientID, token.clientSecret)
     }
     
 
