@@ -59,12 +59,11 @@ class Token {
             return UserDefaults.standard.string(forKey: UserDefaultString.tokenKey)
         }
         else { // token 沒效,重新 get token
-            Task {
-                print("get new token")
-                return try? await getNewToken()
-            }
+            
+            print("get new token")
+            return try? await getNewToken()
+            
         }
-        return nil
     }
     
     func getNewToken() async throws -> String? {
@@ -82,6 +81,7 @@ class Token {
             let tokenExpierDate = Date.now.addingTimeInterval(TimeInterval(authResponse.expiresIn - 60))
             setTokenExpireDate(is: tokenExpierDate)
             setTokenToUserDefault(token: authResponse.accessToken)
+            print(authResponse.accessToken)
             return authResponse.accessToken
         }
         else {

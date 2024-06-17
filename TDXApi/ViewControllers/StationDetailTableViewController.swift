@@ -89,6 +89,12 @@ class StationDetailTableViewController: UIViewController, UITableViewDelegate, U
         tableView.dataSource = self
         
         locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.startUpdatingLocation()
+        }
 //        tableView.register(StationDetailTableViewCell.self, forCellReuseIdentifier: "stationDetailCell")
     }
     
@@ -184,5 +190,9 @@ class StationDetailTableViewController: UIViewController, UITableViewDelegate, U
 }
 
 extension StationDetailTableViewController: CLLocationManagerDelegate {
-    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            print(location.coordinate.latitude, location.coordinate.longitude)
+        }
+    }
 }
