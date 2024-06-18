@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -214,6 +215,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uXx-Ou-qdw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-906.10687022900754" y="48.591549295774648"/>
+        </scene>
+        <!--Station Map View View Controller-->
+        <scene sceneID="Tvp-fD-1iy">
+            <objects>
+                <viewController storyboardIdentifier="stationMapView" id="9om-Cf-lBW" customClass="StationMapViewViewController" customModule="TDXApi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d4w-ww-Y2h">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PWo-L0-GLH">
+                                <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MLw-In-7TS">
+                                <rect key="frame" x="159.33333333333334" y="741.66666666666663" width="74.666666666666657" height="50.333333333333371"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="導航" buttonSize="large"/>
+                                <connections>
+                                    <action selector="navigateToStationWithSender:" destination="9om-Cf-lBW" eventType="touchUpInside" id="gby-05-5Js"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EOt-rd-vxx">
+                                <rect key="frame" x="108.66666666666669" y="747" width="176" height="32"/>
+                                <segments>
+                                    <segment title="走路"/>
+                                    <segment title="開車"/>
+                                    <segment title="自行車"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="cLg-QN-POS"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="EOt-rd-vxx" secondAttribute="bottom" constant="74" id="3TG-hA-tGy"/>
+                            <constraint firstItem="PWo-L0-GLH" firstAttribute="leading" secondItem="cLg-QN-POS" secondAttribute="leading" id="4g5-BC-WXu"/>
+                            <constraint firstItem="PWo-L0-GLH" firstAttribute="top" secondItem="cLg-QN-POS" secondAttribute="top" id="Dnk-UM-68R"/>
+                            <constraint firstItem="EOt-rd-vxx" firstAttribute="centerX" secondItem="d4w-ww-Y2h" secondAttribute="centerX" id="QXa-Do-5nF"/>
+                            <constraint firstItem="MLw-In-7TS" firstAttribute="centerX" secondItem="d4w-ww-Y2h" secondAttribute="centerX" id="oA0-1e-jsC"/>
+                            <constraint firstAttribute="bottom" secondItem="MLw-In-7TS" secondAttribute="bottom" constant="60" id="pPa-qt-Rf5"/>
+                            <constraint firstAttribute="bottom" secondItem="PWo-L0-GLH" secondAttribute="bottom" id="tMp-ez-5RG"/>
+                            <constraint firstItem="PWo-L0-GLH" firstAttribute="trailing" secondItem="d4w-ww-Y2h" secondAttribute="trailing" id="wcb-Xv-OH0"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="k8u-VD-kga"/>
+                    <connections>
+                        <outlet property="navigateButton" destination="MLw-In-7TS" id="z0f-7e-t44"/>
+                        <outlet property="segmentControl" destination="EOt-rd-vxx" id="cgt-w6-K4q"/>
+                        <outlet property="stationMapView" destination="PWo-L0-GLH" id="qoX-oc-KxM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="axt-aT-iVk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-40.458015267175568" y="48.591549295774648"/>
         </scene>
     </scenes>
     <resources>

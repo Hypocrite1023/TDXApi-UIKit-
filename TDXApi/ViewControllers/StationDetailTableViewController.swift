@@ -9,19 +9,55 @@ import UIKit
 import CoreLocation
 
 class StationDetailTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let stationData = mergeResult[mergeResultKey[indexPath.row]] {
+            if let destinationViewController = storyboard?.instantiateViewController(withIdentifier: "stationMapView") as? StationMapViewViewController {
+                destinationViewController.stationData = stationData
+                navigationController?.pushViewController(destinationViewController, animated: true)
+            }
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         currentStationDetail.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "stationDetailCell") as! StationDetailTableViewCell
-        cell.stationNameLabel?.text = mergeResult[mergeResultKey[indexPath.row]]?.StationName.Zh_tw.description
-        cell.bikeWithPowerLabel?.text = mergeResult[mergeResultKey[indexPath.row]]?.AvailableRentBikesDetail?.ElectricBikes.description
-        cell.bikeWithoutPowerLabel?.text = mergeResult[mergeResultKey[indexPath.row]]?.AvailableRentBikesDetail?.GeneralBikes.description
-        cell.lastUpdateTimeLabel?.text = mergeResult[mergeResultKey[indexPath.row]]?.SrcUpdateTime
-        cell.distanceLabel?.text = "\(0.description) m"
-        return cell
+        if let station = mergeResult[mergeResultKey[indexPath.row]] {
+            cell.stationNameLabel?.text = station.StationName.Zh_tw.description
+            cell.bikeWithPowerLabel?.text = station.AvailableRentBikesDetail?.ElectricBikes.description
+            cell.bikeWithoutPowerLabel?.text = station.AvailableRentBikesDetail?.GeneralBikes.description
+            cell.lastUpdateTimeLabel?.text = station.SrcUpdateTime
+            if let userLocationNotNil = userCurrentLocation {
+                let userLocation = CLLocation(latitude: userLocationNotNil.coordinate.latitude, longitude: userLocationNotNil.coordinate.longitude)
+                let stationLocation = CLLocation(latitude: station.StationPosition.PositionLat, longitude: station.StationPosition.PositionLon)
+                let distanceBetweenStation = userLocation.distance(from: stationLocation)
+                
+                cell.distanceLabel?.text = formatDistance(distanceBetweenStation)
+            } else {
+                cell.distanceLabel?.text = "\(0.description) m"
+            }
+            return cell
+        }
+        return UITableViewCell()
     }
+    let numberFormatter = {
+        let numberFormatter = NumberFormatter()
+        return numberFormatter
+    }()
+    func formatDistance(_ distance: CLLocationDistance) -> String {
+            if distance >= 1000 {
+                let distanceInKm = distance / 1000
+                numberFormatter.maximumFractionDigits = 2
+                return (numberFormatter.string(from: NSNumber(value: distanceInKm)) ?? "\(distanceInKm)") + " km"
+            } else {
+                numberFormatter.maximumFractionDigits = 0
+                return (numberFormatter.string(from: NSNumber(value: distance)) ?? "\(distance)") + " m"
+            }
+        }
     
     
     var currentStationDetail: [CurrentStationDetail] = []
@@ -37,6 +73,8 @@ class StationDetailTableViewController: UIViewController, UITableViewDelegate, U
             $0.description
         }
     }(mergeResult)
+    
+    var userCurrentLocation: CLLocation?
     
     @IBOutlet var tableView: UITableView!
     
@@ -92,9 +130,9 @@ class StationDetailTableViewController: UIViewController, UITableViewDelegate, U
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.startUpdatingLocation()
-        }
+//        if CLLocationManager.locationServicesEnabled() {
+//            locationManager.startUpdatingLocation()
+//        }
 //        tableView.register(StationDetailTableViewCell.self, forCellReuseIdentifier: "stationDetailCell")
     }
     
@@ -190,9 +228,27 @@ class StationDetailTableViewController: UIViewController, UITableViewDelegate, U
 }
 
 extension StationDetailTableViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedWhenInUse, .authorizedAlways:
+            if CLLocationManager.locationServicesEnabled() {
+                locationManager.startUpdatingLocation()
+            }
+        case .denied, .restricted:
+            print("Location services are not allowed")
+        case .notDetermined:
+            break
+        @unknown default:
+            break
+        }
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
             print(location.coordinate.latitude, location.coordinate.longitude)
+            userCurrentLocation = location
         }
+        manager.stopUpdatingLocation()
     }
 }
