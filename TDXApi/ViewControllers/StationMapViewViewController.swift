@@ -86,8 +86,18 @@ class StationMapViewViewController: UIViewController {
                         }
                         
                         let route = response.routes[0]
+                        let expectTime = route.expectedTravelTime
+//                        print(Int(route.expectedTravelTime))
                         DispatchQueue.main.async {
+                            print(expectTime, "first")
                             self.stationMapView.removeOverlays(self.stationMapView.overlays)
+//                            self.stationMapView.removeAnnotations(self.stationMapView.annotations)
+                            for annotation in self.stationMapView.annotations {
+                                if annotation is DistanceAnnotation { // 替換成你的自定義 annotation 類型
+                                    self.stationMapView.removeAnnotation(annotation)
+                                }
+                            }
+                            
                             self.stationMapView.addOverlay(route.polyline, level: .aboveRoads)
                             let rect = route.polyline.boundingMapRect
                             
@@ -96,6 +106,12 @@ class StationMapViewViewController: UIViewController {
 //                            annotation.detailCalloutAccessoryView
                             
 //                            self.stationMapView.addAnnotation(annotation)
+                            let middleOfTheRoute = route.polyline.points()[route.polyline.pointCount / 2].coordinate
+                            
+                            let distanceAnnotation = DistanceAnnotation(coordinate: middleOfTheRoute, distance: Int(expectTime))
+                            
+                            self.stationMapView.addAnnotation(distanceAnnotation)
+                            
                             
                             self.stationMapView.setRegion(MKCoordinateRegion(rect), animated: true)
                         }
@@ -151,5 +167,38 @@ extension StationMapViewViewController: MKMapViewDelegate {
         renderer.lineWidth = 4
         
         return renderer
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: any MKAnnotation) -> MKAnnotationView? {
+        guard !(annotation is MKUserLocation) else {
+            return nil
+        }
+        
+        if let annotation = annotation as? DistanceAnnotation {
+            let identifier = "DistanceAnnotation"
+            var distanceAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? DistanceAnnotationView
+            
+            if distanceAnnotationView == nil {
+                distanceAnnotationView = DistanceAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                
+            } else {
+                distanceAnnotationView?.annotation = annotation
+            }
+            return distanceAnnotationView
+        } 
+//        else if let annotation = annotation as? MKPointAnnotation {
+//            let identifier = "PointAnnotation"
+//            var pointAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+//            
+//            if pointAnnotationView == nil {
+//                pointAnnotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+//                
+//            } else {
+//                pointAnnotationView?.annotation = annotation
+//            }
+//            return pointAnnotationView
+//        }
+        
+        return nil
     }
 }
