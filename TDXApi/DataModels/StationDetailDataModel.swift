@@ -78,6 +78,8 @@ struct mergeStationDetail {
     var AvailableRentBikes : Int?
     var AvailableReturnBikes : Int?
     var AvailableRentBikesDetail: AvailableRentBike?
+    
+    var distance: Int?
 }
 
 class StationDetailManager {

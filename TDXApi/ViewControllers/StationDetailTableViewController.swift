@@ -10,69 +10,58 @@ import CoreLocation
 
 class StationDetailTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let stationData = mergeResult[mergeResultKey[indexPath.row]] {
-            if let destinationViewController = storyboard?.instantiateViewController(withIdentifier: "stationMapView") as? StationMapViewViewController {
-                destinationViewController.stationData = stationData
-                navigationController?.pushViewController(destinationViewController, animated: true)
-            }
+        let stationData = filteredStationDetail[indexPath.row]
+        if let destinationViewController = storyboard?.instantiateViewController(withIdentifier: "stationMapView") as? StationMapViewViewController {
+            destinationViewController.stationData = stationData
+            navigationController?.pushViewController(destinationViewController, animated: true)
         }
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        currentStationDetail.count
+        filteredStationDetail.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "stationDetailCell") as! StationDetailTableViewCell
-        if let station = mergeResult[mergeResultKey[indexPath.row]] {
-            cell.stationNameLabel?.text = station.StationName.Zh_tw.description
-            cell.bikeWithPowerLabel?.text = station.AvailableRentBikesDetail?.ElectricBikes.description
-            cell.bikeWithoutPowerLabel?.text = station.AvailableRentBikesDetail?.GeneralBikes.description
-            cell.lastUpdateTimeLabel?.text = station.SrcUpdateTime
-            if let userLocationNotNil = userCurrentLocation {
-                let userLocation = CLLocation(latitude: userLocationNotNil.coordinate.latitude, longitude: userLocationNotNil.coordinate.longitude)
-                let stationLocation = CLLocation(latitude: station.StationPosition.PositionLat, longitude: station.StationPosition.PositionLon)
-                let distanceBetweenStation = userLocation.distance(from: stationLocation)
-                
-                cell.distanceLabel?.text = formatDistance(distanceBetweenStation)
-            } else {
-                cell.distanceLabel?.text = "\(0.description) m"
-            }
-            return cell
-        }
-        return UITableViewCell()
+        let station = filteredStationDetail[indexPath.row]
+        cell.stationNameLabel?.text = station.StationName.Zh_tw.description
+        cell.bikeWithPowerLabel?.text = station.AvailableRentBikesDetail?.ElectricBikes.description
+        cell.bikeWithoutPowerLabel?.text = station.AvailableRentBikesDetail?.GeneralBikes.description
+        cell.lastUpdateTimeLabel?.text = station.SrcUpdateTime
+        cell.distanceLabel?.text = formatDistance(station.distance!)
+        return cell
+        
+//        return UITableViewCell()
     }
     let numberFormatter = {
         let numberFormatter = NumberFormatter()
         return numberFormatter
     }()
-    func formatDistance(_ distance: CLLocationDistance) -> String {
-            if distance >= 1000 {
-                let distanceInKm = distance / 1000
-                numberFormatter.maximumFractionDigits = 2
-                return (numberFormatter.string(from: NSNumber(value: distanceInKm)) ?? "\(distanceInKm)") + " km"
-            } else {
-                numberFormatter.maximumFractionDigits = 0
-                return (numberFormatter.string(from: NSNumber(value: distance)) ?? "\(distance)") + " m"
-            }
+    func formatDistance(_ distance: Int) -> String {
+        if distance >= 1000 {
+            let distanceInKm = distance / 1000
+            numberFormatter.maximumFractionDigits = 2
+            return (numberFormatter.string(from: NSNumber(value: distanceInKm)) ?? "\(distanceInKm)") + " km"
+        } else {
+            numberFormatter.maximumFractionDigits = 0
+            return (numberFormatter.string(from: NSNumber(value: distance)) ?? "\(distance)") + " m"
         }
+    }
     
     
-    var currentStationDetail: [CurrentStationDetail] = []
+    var currentStationDetail: [mergeStationDetail] = []
+    var filteredStationDetail: [mergeStationDetail] = []
 //    lazy var dataSource = returnDetailDataSource()
     
     var detail: UbikeTableViewDataModel?
     var token = Token()
     var detailManager = StationDetailManager()
     var mergeResult = [String: mergeStationDetail]()
-    lazy var mergeResultKey = {
-        (dict: [String: mergeStationDetail]) -> [String] in
-        return dict.keys.map() {
-            $0.description
-        }
-    }(mergeResult)
+    
     
     var userCurrentLocation: CLLocation?
     
@@ -82,6 +71,8 @@ class StationDetailTableViewController: UIViewController, UITableViewDelegate, U
         case all
     }
     let locationManager = CLLocationManager()
+    
+    let stationNameSearchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,7 +102,23 @@ class StationDetailTableViewController: UIViewController, UITableViewDelegate, U
                         }
                         
                     }
-                    currentStationDetail = result
+                    currentStationDetail = Array(mergeResult.values)
+                    
+                    for station in 0..<currentStationDetail.count {
+                        if let userLocationNotNil = userCurrentLocation {
+                            let userLocation = CLLocation(latitude: userLocationNotNil.coordinate.latitude, longitude: userLocationNotNil.coordinate.longitude)
+                            let stationLocation = CLLocation(latitude: currentStationDetail[station].StationPosition.PositionLat, longitude: currentStationDetail[station].StationPosition.PositionLon)
+                            let distanceBetweenStation = userLocation.distance(from: stationLocation)
+                            
+                            currentStationDetail[station].distance = Int(distanceBetweenStation)
+                        } else {
+                            currentStationDetail[station].distance = 0
+                        }
+                    }
+                    currentStationDetail.sort { lhs, rhs in
+                        lhs.distance! < rhs.distance!
+                    }
+                    filteredStationDetail = currentStationDetail
                     self.tableView.reloadData()
 //                    print(currentStationDetail.first.debugDescription)
                 }
@@ -129,6 +136,13 @@ class StationDetailTableViewController: UIViewController, UITableViewDelegate, U
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
+        
+        stationNameSearchController.searchBar.placeholder = "搜尋站點"
+        stationNameSearchController.obscuresBackgroundDuringPresentation = false
+        stationNameSearchController.searchResultsUpdater = self
+        navigationItem.searchController = stationNameSearchController
+        filteredStationDetail = currentStationDetail
+        definesPresentationContext = true
         
 //        if CLLocationManager.locationServicesEnabled() {
 //            locationManager.startUpdatingLocation()
@@ -251,4 +265,22 @@ extension StationDetailTableViewController: CLLocationManagerDelegate {
         }
         manager.stopUpdatingLocation()
     }
+}
+
+extension StationDetailTableViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text else {
+            return
+        }
+        filterStationByStation(name: searchText)
+    }
+    
+    func filterStationByStation(name searchText: String) {
+        filteredStationDetail = searchText.isEmpty ? currentStationDetail : currentStationDetail.filter({ stationDetail in
+            stationDetail.StationName.Zh_tw.contains(searchText)
+        })
+        tableView.reloadData()
+    }
+    
+    
 }
