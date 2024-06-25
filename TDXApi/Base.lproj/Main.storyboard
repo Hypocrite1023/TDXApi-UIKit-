@@ -113,19 +113,19 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Ec4-aC-cnu">
-                                                            <rect key="frame" x="0.0" y="48.666666666666671" width="232.66666666666666" height="56.666666666666671"/>
+                                                            <rect key="frame" x="0.0" y="48.666666666666671" width="248" height="56.666666666666671"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ubb-SV-hXI">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="116.33333333333333" height="56.666666666666664"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="108.66666666666667" height="56.666666666666664"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="電輔車:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYm-Pr-SRJ">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="56.666666666666664" height="20.333333333333332"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="可借車輛:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYm-Pr-SRJ">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="74" height="20.333333333333332"/>
                                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ElectBikeCount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kGm-Fc-loT">
-                                                                            <rect key="frame" x="0.0" y="36.333333333333336" width="116.33333333333333" height="20.333333333333336"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rentBikeCount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kGm-Fc-loT">
+                                                                            <rect key="frame" x="0.0" y="36.333333333333336" width="108.66666666666667" height="20.333333333333336"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -133,16 +133,16 @@
                                                                     </subviews>
                                                                 </stackView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="w8V-04-Sdr">
-                                                                    <rect key="frame" x="131.33333333333334" y="0.0" width="101.33333333333334" height="56.666666666666664"/>
+                                                                    <rect key="frame" x="123.66666666666666" y="0.0" width="124.33333333333334" height="56.666666666666664"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="一般車:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJM-Tk-H81">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="56.666666666666664" height="23.333333333333332"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="可歸還車位:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJM-Tk-H81">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="91.333333333333329" height="23.333333333333332"/>
                                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NormalCount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sij-w9-Qn5">
-                                                                            <rect key="frame" x="0.0" y="36.333333333333336" width="101.33333333333333" height="20.333333333333336"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="returnBikeCount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sij-w9-Qn5">
+                                                                            <rect key="frame" x="0.0" y="36.333333333333336" width="124.33333333333333" height="20.333333333333336"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
@@ -188,8 +188,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="bikeWithPowerLabel" destination="kGm-Fc-loT" id="KiT-MG-VML"/>
-                                            <outlet property="bikeWithoutPowerLabel" destination="Sij-w9-Qn5" id="OWf-TY-pXD"/>
+                                            <outlet property="bikeCanRent" destination="kGm-Fc-loT" id="KiT-MG-VML"/>
+                                            <outlet property="bikeCanReturn" destination="Sij-w9-Qn5" id="OWf-TY-pXD"/>
                                             <outlet property="distanceLabel" destination="Jtd-Fd-1DX" id="zLV-Pr-O5T"/>
                                             <outlet property="lastUpdateTimeLabel" destination="Z9t-2X-M6o" id="zwH-qD-yZ7"/>
                                             <outlet property="stationNameLabel" destination="w3H-d6-nt8" id="9TA-nO-Wf8"/>
@@ -207,7 +207,13 @@
                             <constraint firstItem="7fj-wP-37F" firstAttribute="leading" secondItem="j1o-FO-YaC" secondAttribute="leading" id="wT5-UK-17S"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="8Wr-5s-pLP"/>
+                    <navigationItem key="navigationItem" id="8Wr-5s-pLP">
+                        <barButtonItem key="rightBarButtonItem" title="設定" id="ylr-tf-9lh">
+                            <connections>
+                                <action selector="showSettingView" destination="nyb-C3-aDg" id="w3d-Q6-muM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="7fj-wP-37F" id="eZE-vU-58j"/>
                     </connections>
@@ -269,8 +275,70 @@
             </objects>
             <point key="canvasLocation" x="-40.458015267175568" y="48.591549295774648"/>
         </scene>
+        <!--Setting View Controller-->
+        <scene sceneID="c9M-F3-ohJ">
+            <objects>
+                <viewController storyboardIdentifier="settingViewController" id="KQg-qY-DhJ" customClass="SettingViewController" customModule="TDXApi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rgo-w7-8bI">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="不顯示無車可借之站點" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5s-V6-WnM">
+                                <rect key="frame" x="16" y="139" width="174" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="za3-bQ-avU">
+                                <rect key="frame" x="330" y="134" width="51" height="31"/>
+                            </switch>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H0O-eT-oRn">
+                                <rect key="frame" x="330" y="193" width="51" height="31"/>
+                            </switch>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUJ-9n-qIf">
+                                <rect key="frame" x="16" y="179" width="361" height="1"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="NG2-Mg-Hak"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="不顯示沒車位可還之站點" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jsv-UZ-xLW">
+                                <rect key="frame" x="16" y="198" width="191" height="20.333333333333343"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HHt-jN-pXJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="UUJ-9n-qIf" firstAttribute="leading" secondItem="rgo-w7-8bI" secondAttribute="leading" constant="16" id="0VZ-pZ-SmQ"/>
+                            <constraint firstItem="H0O-eT-oRn" firstAttribute="top" secondItem="UUJ-9n-qIf" secondAttribute="bottom" constant="13" id="AQ5-wH-ouO"/>
+                            <constraint firstItem="HHt-jN-pXJ" firstAttribute="trailing" secondItem="za3-bQ-avU" secondAttribute="trailing" constant="14" id="Dya-Mo-vUu"/>
+                            <constraint firstItem="Jsv-UZ-xLW" firstAttribute="top" secondItem="UUJ-9n-qIf" secondAttribute="bottom" constant="18" id="RqS-2X-RFG"/>
+                            <constraint firstItem="F5s-V6-WnM" firstAttribute="leading" secondItem="HHt-jN-pXJ" secondAttribute="leading" constant="16" id="Vxy-To-6Pj"/>
+                            <constraint firstItem="UUJ-9n-qIf" firstAttribute="top" secondItem="za3-bQ-avU" secondAttribute="bottom" constant="14" id="WQp-dg-5wJ"/>
+                            <constraint firstItem="F5s-V6-WnM" firstAttribute="top" secondItem="HHt-jN-pXJ" secondAttribute="top" constant="80" id="ZsF-XU-QFg"/>
+                            <constraint firstAttribute="trailing" secondItem="UUJ-9n-qIf" secondAttribute="trailing" constant="16" id="jAk-lF-q5r"/>
+                            <constraint firstItem="za3-bQ-avU" firstAttribute="top" secondItem="HHt-jN-pXJ" secondAttribute="top" constant="75" id="s5a-5U-kka"/>
+                            <constraint firstItem="Jsv-UZ-xLW" firstAttribute="leading" secondItem="HHt-jN-pXJ" secondAttribute="leading" constant="16" id="sKK-ue-soc"/>
+                            <constraint firstItem="HHt-jN-pXJ" firstAttribute="trailing" secondItem="H0O-eT-oRn" secondAttribute="trailing" constant="14" id="ta6-nc-fND"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="showStationDontHaveBikeToRent" destination="za3-bQ-avU" id="kyB-5g-fvD"/>
+                        <outlet property="showStationDontHaveSpaceToReturn" destination="H0O-eT-oRn" id="FeQ-D4-Tjd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="adH-mI-8YI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="765.64885496183206" y="255.63380281690141"/>
+        </scene>
     </scenes>
     <resources>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

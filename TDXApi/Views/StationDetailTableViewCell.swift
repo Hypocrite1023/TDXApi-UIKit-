@@ -10,8 +10,8 @@ import UIKit
 class StationDetailTableViewCell: UITableViewCell {
     
     @IBOutlet var stationNameLabel: UILabel?
-    @IBOutlet var bikeWithPowerLabel: UILabel?
-    @IBOutlet var bikeWithoutPowerLabel: UILabel?
+    @IBOutlet var bikeCanRent: UILabel?
+    @IBOutlet var bikeCanReturn: UILabel?
     @IBOutlet var distanceLabel: UILabel?
     @IBOutlet var lastUpdateTimeLabel: UILabel?
     

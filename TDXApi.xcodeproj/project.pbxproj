@@ -21,6 +21,7 @@
 		CD12715F2C1F2A950092F980 /* StationDetailDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD12715E2C1F2A950092F980 /* StationDetailDataModel.swift */; };
 		CD1271612C1FE56C0092F980 /* StationDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1271602C1FE56C0092F980 /* StationDetailTableViewController.swift */; };
 		CD1271632C1FE6710092F980 /* StationDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1271622C1FE6710092F980 /* StationDetailTableViewCell.swift */; };
+		CD44A76C2C2A493000022D7E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD44A76B2C2A493000022D7E /* SettingViewController.swift */; };
 		CD79D59C2C217495005A1718 /* StationMapViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD79D59B2C217495005A1718 /* StationMapViewViewController.swift */; };
 		CDB1750B2C245A4100D85A42 /* DistanceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB1750A2C245A4100D85A42 /* DistanceAnnotation.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,7 @@
 		CD12715E2C1F2A950092F980 /* StationDetailDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailDataModel.swift; sourceTree = "<group>"; };
 		CD1271602C1FE56C0092F980 /* StationDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailTableViewController.swift; sourceTree = "<group>"; };
 		CD1271622C1FE6710092F980 /* StationDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailTableViewCell.swift; sourceTree = "<group>"; };
+		CD44A76B2C2A493000022D7E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		CD79D59B2C217495005A1718 /* StationMapViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationMapViewViewController.swift; sourceTree = "<group>"; };
 		CDB1750A2C245A4100D85A42 /* DistanceAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,6 +100,7 @@
 				CD1271582C1EE1D40092F980 /* UbikeNavigationContorller.swift */,
 				CD1271602C1FE56C0092F980 /* StationDetailTableViewController.swift */,
 				CD79D59B2C217495005A1718 /* StationMapViewViewController.swift */,
+				CD44A76B2C2A493000022D7E /* SettingViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				CD1271632C1FE6710092F980 /* StationDetailTableViewCell.swift in Sources */,
 				CD1271612C1FE56C0092F980 /* StationDetailTableViewController.swift in Sources */,
 				CD79D59C2C217495005A1718 /* StationMapViewViewController.swift in Sources */,
+				CD44A76C2C2A493000022D7E /* SettingViewController.swift in Sources */,
 				CD1271512C1ECD400092F980 /* UbikeTableViewController.swift in Sources */,
 				CD1271542C1ECD8A0092F980 /* UbikeTableViewCell.swift in Sources */,
 				CD1271402C1EC7560092F980 /* ViewController.swift in Sources */,

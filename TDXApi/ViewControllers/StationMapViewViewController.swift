@@ -144,6 +144,7 @@ class StationMapViewViewController: UIViewController {
         }
         
         segmentControl.addTarget(self, action: #selector(navigateToStation), for: .valueChanged)
+        
     }
     
     
@@ -201,4 +202,6 @@ extension StationMapViewViewController: MKMapViewDelegate {
         
         return nil
     }
+    
+    
 }

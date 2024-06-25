@@ -29,8 +29,9 @@ class StationDetailTableViewController: UIViewController, UITableViewDelegate, U
         let cell = tableView.dequeueReusableCell(withIdentifier: "stationDetailCell") as! StationDetailTableViewCell
         let station = filteredStationDetail[indexPath.row]
         cell.stationNameLabel?.text = station.StationName.Zh_tw.description
-        cell.bikeWithPowerLabel?.text = station.AvailableRentBikesDetail?.ElectricBikes.description
-        cell.bikeWithoutPowerLabel?.text = station.AvailableRentBikesDetail?.GeneralBikes.description
+        cell.bikeCanRent?.text = station.AvailableRentBikes?.description
+        cell.backgroundColor = (station.AvailableRentBikes! > 5 ? UIColor.green : (station.AvailableRentBikes! > 3 ? UIColor.yellow : UIColor.red)).withAlphaComponent(0.3)
+        cell.bikeCanReturn?.text = station.AvailableReturnBikes?.description
         cell.lastUpdateTimeLabel?.text = station.SrcUpdateTime
         cell.distanceLabel?.text = formatDistance(station.distance!)
         return cell
@@ -73,6 +74,18 @@ class StationDetailTableViewController: UIViewController, UITableViewDelegate, U
     let locationManager = CLLocationManager()
     
     let stationNameSearchController = UISearchController(searchResultsController: nil)
+    
+    let settingViewController = SettingViewController()
+    
+    @IBAction func showSettingView() {
+        if let destinationViewController = storyboard?.instantiateViewController(withIdentifier: "settingViewController") as? SettingViewController {
+            destinationViewController.switchValueChangeDelegate = self
+            destinationViewController.showStationDontHaveBikeToRentIsOn = false
+            destinationViewController.showStationDontHaveSpaceToReturnIsOn = false
+            navigationController?.pushViewController(destinationViewController, animated: true)
+        }
+    }
+    let bikeLimit = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -141,8 +154,13 @@ class StationDetailTableViewController: UIViewController, UITableViewDelegate, U
         stationNameSearchController.obscuresBackgroundDuringPresentation = false
         stationNameSearchController.searchResultsUpdater = self
         navigationItem.searchController = stationNameSearchController
+        navigationItem.hidesSearchBarWhenScrolling = false
         filteredStationDetail = currentStationDetail
         definesPresentationContext = true
+        
+        tableView.separatorStyle = .singleLine
+        
+        settingViewController.switchValueChangeDelegate = self
         
 //        if CLLocationManager.locationServicesEnabled() {
 //            locationManager.startUpdatingLocation()
@@ -239,6 +257,25 @@ class StationDetailTableViewController: UIViewController, UITableViewDelegate, U
 //    }
     
 
+}
+
+extension StationDetailTableViewController: SwitchValueDelegate {
+    
+    func switchValueDidChange(dontShowNoBikeCanRentIsOn: Bool, dontShowNoSpaceCanReturn: Bool) {
+        print("delegate", dontShowNoBikeCanRentIsOn, dontShowNoSpaceCanReturn)
+        if dontShowNoBikeCanRentIsOn && dontShowNoSpaceCanReturn {
+            filteredStationDetail = currentStationDetail.filter({ $0.AvailableRentBikes! > bikeLimit && $0.AvailableReturnBikes! > bikeLimit})
+        } else if dontShowNoBikeCanRentIsOn && !dontShowNoSpaceCanReturn {
+            filteredStationDetail = currentStationDetail.filter({ $0.AvailableRentBikes! > bikeLimit})
+        } else if !dontShowNoBikeCanRentIsOn && dontShowNoSpaceCanReturn {
+            filteredStationDetail = currentStationDetail.filter({ $0.AvailableReturnBikes! > bikeLimit})
+        } else {
+            filteredStationDetail = currentStationDetail
+        }
+        tableView.reloadData()
+    }
+    
+    
 }
 
 extension StationDetailTableViewController: CLLocationManagerDelegate {
